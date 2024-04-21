@@ -1,6 +1,13 @@
+import React, { useState } from "react";
 import Button from "../Button/Button";
 
-const Header = () => {
+const Header = ({ addCard }) => {
+  const [displayUserCard, setDisplayUserCard] = useState(false);
+
+  const toggleUserCard = () => {
+    setDisplayUserCard((previousState) => !previousState);
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -17,25 +24,30 @@ const Header = () => {
           </div>
           <nav className="header__nav">
             <Button
-              link="#popNewCard"
+              // link="#popNewCard"
+              onClick={addCard}
               text="Создать новую задачу"
               id="btnMainNew"
               className="header__btn-main-new _hover01"
             />
 
-            <a href="#user-set-target" className="header__user _hover02">
+            <a className="header__user _hover02" onClick={toggleUserCard}>
               Ivan Ivanov
             </a>
-            <div className="header__pop-user-set pop-user-set" id="user-set-target">
-              {/* <!-- <a href="">x</a> --> */}
-              <p className="pop-user-set__name">Ivan Ivanov</p>
-              <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-              <div className="pop-user-set__theme">
-                <p>Темная тема</p>
-                <input type="checkbox" className="checkbox" name="checkbox" />
+            {displayUserCard ? (
+              <div className="header__pop-user-set pop-user-set" id="user-set-target">
+                {/* <!-- <a href="">x</a> --> */}
+                <p className="pop-user-set__name">Ivan Ivanov</p>
+                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+                <div className="pop-user-set__theme">
+                  <p>Темная тема</p>
+                  <input type="checkbox" className="checkbox" name="checkbox" />
+                </div>
+                <Button link="#popExit" text="Выйти" className="_hover03" />
               </div>
-              <Button link="#popExit" text="Выйти" className="_hover03" />
-            </div>
+            ) : (
+              ""
+            )}
           </nav>
         </div>
       </div>
