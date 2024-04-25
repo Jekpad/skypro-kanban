@@ -3,7 +3,7 @@ const Loader = () => {
     <main className="main">
       <div className="container">
         <div className="custom-loader-container">
-          <div class="custom-loader"></div>
+          <div className="custom-loader"></div>
           <h1>Данные загружаются...</h1>
         </div>
       </div>

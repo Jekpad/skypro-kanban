@@ -8,9 +8,9 @@ const Card = ({ id, topic, title, date }) => {
           </div>
           <a href="#popBrowse" target="_self">
             <div className="card__btn">
+              {/* <div></div>
               <div></div>
-              <div></div>
-              <div></div>
+              <div></div> */}
             </div>
           </a>
         </div>

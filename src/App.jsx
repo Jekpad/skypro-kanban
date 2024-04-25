@@ -30,10 +30,10 @@ function App() {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       setDataLoading(false);
     }, 2000);
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -45,6 +45,7 @@ function App() {
 
         <Header addCard={addCard} />
         {dataLoading ? <Loader /> : <Main cards={cards} />}
+        {/* <Main cards={cards} /> */}
       </div>
     </>
   );

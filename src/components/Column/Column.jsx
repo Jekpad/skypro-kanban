@@ -7,8 +7,8 @@ const Column = ({ title, cards }) => {
         <p>{title}</p>
       </div>
       <div className="cards">
-        {cards.map((card) => (
-          <Card id={card.id} topic={card.topic} title={card.title} date={card.date} />
+        {cards.map((card, index) => (
+          <Card key={card.id} id={card.id} topic={card.topic} title={card.title} date={card.date} />
         ))}
       </div>
     </div>

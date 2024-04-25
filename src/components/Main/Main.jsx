@@ -7,8 +7,8 @@ const Main = ({ cards }) => {
       <div className="container">
         <div className="main__block">
           <div className="main__content">
-            {statusList.map((status) => (
-              <Column title={status} cards={cards.filter((card) => card.status == status)} />
+            {statusList.map((status, index) => (
+              <Column key={index} title={status} cards={cards.filter((card) => card.status == status)} />
             ))}
           </div>
         </div>
