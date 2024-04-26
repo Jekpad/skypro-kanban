@@ -785,7 +785,7 @@ body {
   padding: 0;
 }
 .header__pop-user-set {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 61px;
   right: 0;
@@ -798,6 +798,42 @@ body {
   padding: 34px;
   text-align: center;
   z-index: 2;
+}
+
+.custom-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-loader {
+  width: 100px;
+  height: 100px;
+  display: grid;
+}
+
+.custom-loader::before,
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side, #36f47e 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  animation: s2 2s infinite;
+}
+
+.custom-loader::before {
+  margin: 8px;
+  filter: hue-rotate(45deg);
+  background-size: 16px 16px;
+  animation-timing-function: linear;
+}
+
+@keyframes s2 {
+  100% {
+    transform: rotate(0.5turn);
+  }
 }
 
 .main {

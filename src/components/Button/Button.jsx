@@ -1,6 +1,6 @@
-const Button = ({ link, text, id, className }) => {
+const Button = ({ link, text, id, className, onClick }) => {
   return (
-    <button id={id || ""} className={className || ""}>
+    <button id={id || ""} className={className || ""} onClick={onClick}>
       <a href={link || "#"}>{text}</a>
     </button>
   );
