@@ -9,6 +9,7 @@ import {
   StyledCardDate,
 } from "./Card.styled";
 import { topicCompare } from "../../data";
+import { Link } from "react-router-dom";
 
 const Card = ({ id, topic, title, date }) => {
   const color = topicCompare[topic];
@@ -29,9 +30,9 @@ const Card = ({ id, topic, title, date }) => {
           </a>
         </StyledCardGroup>
         <StyledCardContent className="card__content">
-          <a href="" target="_blank">
+          <Link to={"/card/" + id}>
             <StyledCardTitle>{title}</StyledCardTitle>
-          </a>
+          </Link>
           <StyledCardDate>
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
               <g clipPath="url(#clip0_1_415)">
