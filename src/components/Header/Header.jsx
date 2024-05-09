@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   StyledHeader,
   StyledHeaderBlock,
@@ -33,14 +33,7 @@ const Header = ({ addCard }) => {
             </a>
           </StyledHeaderLogo>
           <StyledNav>
-            <StyledAddTaskButton
-              // link="#popNewCard"
-              onClick={addCard}
-              text="Создать новую задачу"
-              id="btnMainNew"
-              $width={"178px"}
-            />
-
+            <StyledAddTaskButton onClick={addCard} text="Создать новую задачу" id="btnMainNew" $width={"178px"} />
             <StyledHeaderUser onClick={toggleUserCard}>Ivan Ivanov</StyledHeaderUser>
             {displayUserCard ? (
               <StyledPopUpUser id="user-set-target">

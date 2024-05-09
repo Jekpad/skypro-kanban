@@ -1,7 +1,4 @@
 import Main from "../components/Main/Main";
-import PopNewCard from "../components/Popups/PopNewCard";
-import PopUser from "../components/Popups/PopUser";
-import PopBrowse from "../components/Popups/PopBrowse";
 import Loader from "../components/Loader/Loader";
 import Header from "../components/Header/Header";
 import { cardsList, topicList } from "../data";

@@ -10,12 +10,13 @@ import {
 } from "./Card.styled";
 import { topicCompare } from "../../data";
 import { Link } from "react-router-dom";
+import { AppRoutes } from "../../AppRoutes ";
 
 const Card = ({ id, topic, title, date }) => {
   const color = topicCompare[topic];
 
   return (
-    <StyledCardItem className="cards__item" data-id={id}>
+    <StyledCardItem data-id={id}>
       <StyledCard>
         <StyledCardGroup>
           <StyledCardTheme $color={color}>
@@ -29,8 +30,8 @@ const Card = ({ id, topic, title, date }) => {
             </StyledCardButton>
           </a>
         </StyledCardGroup>
-        <StyledCardContent className="card__content">
-          <Link to={"/card/" + id}>
+        <StyledCardContent>
+          <Link to={`${AppRoutes.Card}/${id}`}>
             <StyledCardTitle>{title}</StyledCardTitle>
           </Link>
           <StyledCardDate>
