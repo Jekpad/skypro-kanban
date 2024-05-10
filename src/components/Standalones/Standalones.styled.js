@@ -48,7 +48,7 @@ export const StyledModalTitle = styled.div`
   }
 `;
 
-export const StyledModalFormLogin = styled.form`
+export const StyledModalFormLogin = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;

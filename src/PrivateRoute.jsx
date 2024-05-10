@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { AppRoutes } from "./AppRoutes ";
+import { AppRoutesList } from "./AppRoutesList";
 
 function PrivateRoute({ isAuth }) {
-  return isAuth ? <Outlet /> : <Navigate to={AppRoutes.Login} />;
+  return isAuth ? <Outlet /> : <Navigate to={AppRoutesList.Login} />;
 }
 
 export default PrivateRoute;
