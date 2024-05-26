@@ -10,18 +10,17 @@ import { useState } from "react";
 import { AppRoutesList } from "./AppRoutesList";
 
 const AppRoutes = () => {
-  const [isAuth, setAuth] = useState(false);
-
+  const [user, setUser] = useState(null);
   return (
     <Routes>
-      <Route element={<PrivateRoute isAuth={isAuth} />}>
-        <Route path={AppRoutesList.Main} element={<MainPage />}>
+      <Route element={<PrivateRoute isAuth={user} />}>
+        <Route path={AppRoutesList.Main} element={<MainPage user={user} />}>
           <Route path={AppRoutesList.SelectedCard} element={<CardPage />} />
-          <Route path={AppRoutesList.Exit} element={<ExitPage authUser={setAuth} />} />
+          <Route path={AppRoutesList.Exit} element={<ExitPage setUser={setUser} />} />
         </Route>
       </Route>
 
-      <Route path={AppRoutesList.Login} element={<LoginPage authUser={setAuth} />} />
+      <Route path={AppRoutesList.Login} element={<LoginPage setUser={setUser} />} />
       <Route path={AppRoutesList.Register} element={<RegistrationPage />} />
       <Route path={AppRoutesList.NotFound} element={<NotFoundPage />} />
     </Routes>
