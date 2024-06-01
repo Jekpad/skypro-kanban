@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import { AppRoutesList } from "../../AppRoutesList.js";
+
 import {
   StyledHeader,
   StyledHeaderBlock,
@@ -13,9 +17,8 @@ import {
 } from "./Header.styled.js";
 import { StyledContainer } from "../Container/Container.styled.js";
 import { StyledButton } from "../Button/Button.styled.js";
-import { Link } from "react-router-dom";
 
-const Header = ({ addCard, user }) => {
+const Header = ({ user }) => {
   const [displayUserCard, setDisplayUserCard] = useState(false);
 
   const toggleUserCard = () => {
@@ -33,11 +36,12 @@ const Header = ({ addCard, user }) => {
             </a>
           </StyledHeaderLogo>
           <StyledNav>
-            <StyledAddTaskButton onClick={addCard} text="Создать новую задачу" id="btnMainNew" $width={"178px"} />
+            <Link to={`${AppRoutesList.Card}`}>
+              <StyledAddTaskButton text="Создать новую задачу" id="btnMainNew" $width={"178px"} />
+            </Link>
             <StyledHeaderUser onClick={toggleUserCard}>{user.name}</StyledHeaderUser>
             {displayUserCard ? (
               <StyledPopUpUser id="user-set-target">
-                {/* <!-- <a href="">x</a> --> */}
                 <StyledPopUpUserName>{user.name}</StyledPopUpUserName>
                 <StyledPopUpUserMail>{user.login}</StyledPopUpUserMail>
                 <StyledHeaderTheme>

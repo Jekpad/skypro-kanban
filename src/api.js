@@ -46,13 +46,27 @@ export async function getTodos(token) {
     },
   });
 
-  // Убрать на релизе
-  const resutl = Math.round(Math.random() * 10);
-
-  if (resutl < 7) {
-    throw new Error("Ошибка сервера!");
+  if (response.ok) {
+    const data = await response.json();
+    return data;
   }
-  //
+
+  throw new Error("Ошибка сервера!");
+}
+
+export async function addNewTodos({ token, title, topic, description, date }) {
+  const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      title: title,
+      topic: topic,
+      description: description,
+      date: date,
+    }),
+  });
 
   if (response.ok) {
     const data = await response.json();
