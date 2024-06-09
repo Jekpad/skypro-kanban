@@ -9,6 +9,36 @@ import { useState } from "react";
 import { addNewTodos } from "../../api";
 import { useUserContext } from "../../context/user";
 import { topicCompare, topicList } from "../../data";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const throwError = (message) => {
+  toast.error(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Slide,
+  });
+};
+
+const throwSuccess = (message) => {
+  toast.success(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Slide,
+  });
+};
 
 const PopNewCard = () => {
   const navigate = useNavigate();
@@ -23,11 +53,29 @@ const PopNewCard = () => {
   const [date, setDate] = useState(new Date().toISOString());
 
   const addCard = () => {
+    if (title.length == 0) {
+      throwError("Необходимо указать название задачи!");
+      return;
+    }
+    if (title.description == 0) {
+      throwError("Необходимо указать описание задачи!");
+      return;
+    }
+    if (topic.length == 0) {
+      throwError("Необходимо указать категорию задачи!");
+      return;
+    }
+
     const token = user.token;
-    addNewTodos({ token, title, topic, description, date }).then((data) => {
-      updateCards(data.tasks);
-      navigate(AppRoutesList.Main);
-    });
+    addNewTodos({ token, title, topic, description, date })
+      .then((data) => {
+        throwSuccess("Карточка успешно добавлена!");
+        updateCards(data.tasks);
+        navigate(AppRoutesList.Main);
+      })
+      .catch(() => {
+        throwError("Ошибка добавления карточки!");
+      });
   };
 
   return (
@@ -86,6 +134,7 @@ const PopNewCard = () => {
           </Styled.StyledPopUpContent>
         </Styled.StyledPopUpBlock>
       </Styled.StyledPopUpContainer>
+      <ToastContainer />
     </Styled.StyledPopUp>
   );
 };

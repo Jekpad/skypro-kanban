@@ -8,6 +8,36 @@ import * as Styled from "./PopUp.styled";
 import { statusList, topicCompare } from "../../data";
 import { useUserContext } from "../../context/user";
 import { editTodos, deleteTodos } from "../../api";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const throwError = (message) => {
+  toast.error(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Slide,
+  });
+};
+
+const throwSuccess = (message) => {
+  toast.success(message, {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Slide,
+  });
+};
 
 const PopBrowse = ({ id }) => {
   const navigate = useNavigate();
@@ -30,6 +60,11 @@ const PopBrowse = ({ id }) => {
   }
 
   const editCard = () => {
+    if (description.length == 0) {
+      throwError("Необходимо указать описание задачи!");
+      return;
+    }
+
     editTodos({
       token: token,
       taskId: id,
@@ -38,10 +73,15 @@ const PopBrowse = ({ id }) => {
       status: status,
       description: description,
       date: date,
-    }).then((data) => {
-      updateCards(data.tasks);
-      navigate(AppRoutesList.Main);
-    });
+    })
+      .then((data) => {
+        throwSuccess("Карточка успешно добавлена!");
+        updateCards(data.tasks);
+        navigate(AppRoutesList.Main);
+      })
+      .catch(() => {
+        throwError("Ошибка добавления карточки!");
+      });
   };
 
   const deleteCard = () => {
@@ -145,6 +185,7 @@ const PopBrowse = ({ id }) => {
             </Styled.StyledPopUpContent>
           </Styled.StyledPopUpBlock>
         </Styled.StyledPopUpContainer>
+        <ToastContainer />
       </Styled.StyledPopUp>
     </>
   );

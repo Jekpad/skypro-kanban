@@ -12,6 +12,7 @@ import { useContext } from "react";
 
 const Header = ({ user }) => {
   const [displayUserCard, setDisplayUserCard] = useState(false);
+  const base = import.meta.env.BASE_URL;
 
   const toggleUserCard = () => {
     setDisplayUserCard((previousState) => !previousState);
@@ -28,7 +29,7 @@ const Header = ({ user }) => {
         <Styled.StyledHeaderBlock>
           <Styled.StyledHeaderLogo>
             <Link to={AppRoutesList.Main}>
-              <img src={theme === "light" ? "/logo.png" : "/logo_dark.png"} alt="logo" />
+              <img src={theme === "light" ? `${base}/logo.png` : `${base}/logo_dark.png`} alt="logo" />
             </Link>
           </Styled.StyledHeaderLogo>
           <Styled.StyledNav>
