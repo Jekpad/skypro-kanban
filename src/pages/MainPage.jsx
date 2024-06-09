@@ -14,16 +14,15 @@ const MainPage = () => {
   const [dataLoading, setDataLoading] = useState(true);
   const { user } = useUserContext();
 
-  const getCards = () => {
-    getTodos(user.token)
-      .then((data) => {
-        setCards(data.tasks);
-        setDataLoading(false);
-        setLoadingError(false);
-      })
-      .catch(() => {
-        setTimeout(getCards, 1000);
-      });
+  const getCards = async () => {
+    try {
+      const response = await getTodos(user.token);
+      setCards(response.tasks);
+      setDataLoading(false);
+      setLoadingError(false);
+    } catch (error) {
+      setTimeout(getCards, 1000);
+    }
   };
 
   const updateCards = (newCards) => {
@@ -41,7 +40,11 @@ const MainPage = () => {
   } else if (dataLoading) {
     displayComponent = <Loader />;
   } else {
-    displayComponent = <Main />;
+    displayComponent = (
+      <>
+        <Main />
+      </>
+    );
   }
 
   return (

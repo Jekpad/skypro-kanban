@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import { AppRoutesList } from "./AppRoutesList";
 
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import { UserContext } from "./context/user";
 
 import NewCardPage from "./pages/NewCardPage";

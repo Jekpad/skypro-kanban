@@ -1,28 +1,13 @@
-import styled from "styled-components";
-
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 
-const StyledDayPickerWrapper = styled.div`
-  & * {
-    font-size: 10px;
-    color: rgb(148, 166, 190);
-  }
+import * as Styled from "./Calendar.styled";
 
-  & .rdp-caption_label {
-    font-size: 14px;
-  }
-
-  & button {
-    width: 22px;
-    height: 22px;
-  }
-`;
-
-const Calendar = ({ date, setDate }) => {
+const Calendar = ({ date, setDate, mode = "single" }) => {
+  date = new Date(date || null);
   let formatedSelectedDate = format(date, "dd.MM.yyy");
 
   const updateSelectedDate = (date) => {
@@ -31,19 +16,17 @@ const Calendar = ({ date, setDate }) => {
   };
 
   return (
-    <div className="pop-new-card__calendar calendar">
-      <p className="calendar__ttl subttl">Даты</p>
-
-      <StyledDayPickerWrapper>
-        <DayPicker mode="single" selected={date} onSelect={(date) => updateSelectedDate(date)} locale={ru} />
-      </StyledDayPickerWrapper>
-
-      <div className="calendar__period">
-        <p className="calendar__p date-end">
-          Срок исполнения: <span className="date-control">{formatedSelectedDate}</span>
-        </p>
-      </div>
-    </div>
+    <Styled.Calendar>
+      <Styled.CalendarTitle>Даты</Styled.CalendarTitle>
+      <Styled.DayPickerWrapper>
+        <DayPicker mode={mode} selected={date} onSelect={(date) => updateSelectedDate(date)} locale={ru} />
+      </Styled.DayPickerWrapper>
+      <Styled.CalendarPeriod>
+        <Styled.CalendarPeriodDateEnd>
+          Срок исполнения: <span>{formatedSelectedDate}</span>
+        </Styled.CalendarPeriodDateEnd>
+      </Styled.CalendarPeriod>
+    </Styled.Calendar>
   );
 };
 

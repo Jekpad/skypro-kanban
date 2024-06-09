@@ -35,7 +35,7 @@ export const StyledPopUpContainer = styled.div`
 export const StyledPopUpBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background: ${(props) => props.theme.color_background_primary};
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
@@ -44,13 +44,20 @@ export const StyledPopUpBlock = styled.div`
   position: relative;
 `;
 
+export const StyledPopUpTopBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+`;
+
 export const StyledPopUpContent = styled.div`
   display: block;
   text-align: left;
 `;
 
 export const StyledPopUpTitle = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -86,7 +93,7 @@ export const StyledPopUpFormBlock = styled.div`
 `;
 
 export const StyledPopUpSubtitle = styled.label`
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -102,12 +109,13 @@ export const StyledPopUpInput = styled.input`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  color: ${(props) => props.theme.color_font_primary};
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     letter-spacing: -0.14px;
   }
 
@@ -115,7 +123,7 @@ export const StyledPopUpInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     letter-spacing: -0.14px;
   }
 `;
@@ -136,7 +144,7 @@ export const StyledPopUpCategories = styled.div`
 
 export const StyledPopUpCategoriesSubtitle = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -162,11 +170,27 @@ export const StyledCategoriesTheme = styled.label`
   border-radius: 24px;
   opacity: 0.4;
   cursor: pointer;
-  color: ${(props) => topicStyles[props.$colorName]["color"] || topicStyles["gray"]["color"]};
+  color: ${(props) => topicStyles[props.$colorName]?.color || topicStyles["gray"]["color"]};
   background-color: ${(props) =>
-    topicStyles[props.$colorName]["backgroundColor"] || topicStyles["gray"]["backgroundColor"]};
+    topicStyles[props.$colorName]?.backgroundColor || topicStyles["gray"]["backgroundColor"]};
 
   ${StyledCategoriesThemeInput}:checked + & {
     opacity: 1 !important;
+  }
+`;
+
+export const StyledCategoriesStatus = styled(StyledCategoriesTheme)`
+  height: unset;
+  font-size: 14px;
+  border-radius: 24px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  color: #94a6be;
+  padding: 11px 14px 10px;
+  background-color: transparent;
+  opacity: 1;
+
+  ${StyledCategoriesThemeInput}:checked + & {
+    background: #94a6be;
+    color: #ffffff;
   }
 `;

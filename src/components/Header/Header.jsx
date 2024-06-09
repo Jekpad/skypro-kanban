@@ -3,20 +3,12 @@ import { Link } from "react-router-dom";
 
 import { AppRoutesList } from "../../AppRoutesList.js";
 
-import {
-  StyledHeader,
-  StyledHeaderBlock,
-  StyledHeaderLogo,
-  StyledNav,
-  StyledAddTaskButton,
-  StyledHeaderUser,
-  StyledPopUpUser,
-  StyledPopUpUserName,
-  StyledPopUpUserMail,
-  StyledHeaderTheme,
-} from "./Header.styled.js";
+import * as Styled from "./Header.styled.js";
 import { StyledContainer } from "../Container/Container.styled.js";
 import { StyledButton } from "../Button/Button.styled.js";
+
+import { ThemeContext } from "../../providers/CustomThemeProvider";
+import { useContext } from "react";
 
 const Header = ({ user }) => {
   const [displayUserCard, setDisplayUserCard] = useState(false);
@@ -25,42 +17,46 @@ const Header = ({ user }) => {
     setDisplayUserCard((previousState) => !previousState);
   };
 
+  const { theme, setTheme } = useContext(ThemeContext);
+  const changeTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
-    <StyledHeader>
+    <Styled.StyledHeader>
       <StyledContainer>
-        <StyledHeaderBlock>
-          <StyledHeaderLogo>
-            <a>
-              <img src="/logo.png" alt="logo" />
-              {/* "/logo_dark.png" */}
-            </a>
-          </StyledHeaderLogo>
-          <StyledNav>
-            <Link to={`${AppRoutesList.Card}`}>
-              <StyledAddTaskButton text="Создать новую задачу" id="btnMainNew" $width={"178px"} />
+        <Styled.StyledHeaderBlock>
+          <Styled.StyledHeaderLogo>
+            <Link to={AppRoutesList.Main}>
+              <img src={theme === "light" ? "/logo.png" : "/logo_dark.png"} alt="logo" />
             </Link>
-            <StyledHeaderUser onClick={toggleUserCard}>{user.name}</StyledHeaderUser>
+          </Styled.StyledHeaderLogo>
+          <Styled.StyledNav>
+            <Link to={`${AppRoutesList.Card}`}>
+              <Styled.StyledAddTaskButton text="Создать новую задачу" id="btnMainNew" $width={"178px"} />
+            </Link>
+            <Styled.StyledHeaderUser onClick={toggleUserCard}>{user.name}</Styled.StyledHeaderUser>
             {displayUserCard ? (
-              <StyledPopUpUser id="user-set-target">
-                <StyledPopUpUserName>{user.name}</StyledPopUpUserName>
-                <StyledPopUpUserMail>{user.login}</StyledPopUpUserMail>
-                <StyledHeaderTheme>
+              <Styled.StyledPopUpUser id="user-set-target">
+                <Styled.StyledPopUpUserName>{user.name}</Styled.StyledPopUpUserName>
+                <Styled.StyledPopUpUserMail>{user.login}</Styled.StyledPopUpUserMail>
+                <Styled.StyledHeaderTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
-                </StyledHeaderTheme>
+                  <input onClick={changeTheme} checked={theme != "light"} type="checkbox" name="checkbox" readOnly />
+                </Styled.StyledHeaderTheme>
                 <Link to={"/exit"}>
                   <StyledButton $inverted $width={"72px"}>
                     Выйти
                   </StyledButton>
                 </Link>
-              </StyledPopUpUser>
+              </Styled.StyledPopUpUser>
             ) : (
               ""
             )}
-          </StyledNav>
-        </StyledHeaderBlock>
+          </Styled.StyledNav>
+        </Styled.StyledHeaderBlock>
       </StyledContainer>
-    </StyledHeader>
+    </Styled.StyledHeader>
   );
 };
 

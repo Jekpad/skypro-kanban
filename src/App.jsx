@@ -1,13 +1,12 @@
 import "./App.css";
 import AppRoutes from "./AppRoutes";
-import { GlobalStyle } from "./Global.styled";
+import CustomThemeProvider from "./providers/CustomThemeProvider";
 
 function App() {
   return (
-    <>
-      <GlobalStyle />
+    <CustomThemeProvider>
       <AppRoutes />
-    </>
+    </CustomThemeProvider>
   );
 }
 

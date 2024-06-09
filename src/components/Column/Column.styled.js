@@ -18,7 +18,7 @@ export const StyledColumnTitle = styled.div`
   margin: 15px 0;
 
   & p {
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     font-size: 14px;
     font-weight: 600;
     line-height: 1;

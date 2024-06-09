@@ -10,7 +10,7 @@ export const StyledCardItem = styled.div`
 export const StyledCard = styled.div`
   width: 220px;
   height: 130px;
-  background-color: #ffffff;
+  background: ${(props) => props.theme.color_background_primary};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ export const StyledCardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: #000000;
+  color: ${(props) => props.theme.color_font_primary};
   margin-bottom: 10px;
 `;
 
@@ -87,7 +87,7 @@ export const StyledCardDate = styled.div`
     margin-left: 6px;
     font-size: 10px;
     line-height: 13px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     letter-spacing: 0.2px;
   }
 `;

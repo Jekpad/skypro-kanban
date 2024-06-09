@@ -1,10 +1,51 @@
 import { styled, createGlobalStyle } from "styled-components";
 
+export const lightTheme = {
+  color_background_primary: "#FFFFFF",
+  color_background_secondary: "#EAEEF6",
+
+  color_font_primary: "#000",
+  color_font_secondary: "#94A6BE",
+
+  color_shadow: "rgba(26, 56, 101, 0.21)",
+
+  color_button_font: "#FFFFFF",
+  color_button_background: "#565EEF",
+  color_button_background_contrast: "#33399b;",
+  color_button_border: "#565EEF",
+
+  color_button_inverted_font: "#565EEF",
+  color_button_inverted_background: "transparent",
+  color_button_inverted_border: "#565EEF",
+};
+
+export const darkTheme = {
+  color_background_primary: "#20202C",
+  color_background_secondary: "#151419",
+
+  color_font_primary: "#FFF",
+  color_font_secondary: "#94A6BE",
+
+  color_shadow: "rgba(148, 166, 190, 0.40)",
+
+  color_button_font: "#FFFFFF",
+  color_button_background: "#565EEF",
+  color_button_background_contrast: "#33399b;",
+  color_button_border: "#565EEF",
+
+  color_button_inverted_font: "#FFF",
+  color_button_inverted_background: "transparent",
+  color_button_inverted_border: "#FFF",
+};
+
+//  ${(props) => props.theme.color_background_primary};
+
 export const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.25s linear;
 }
 
 *:before,
@@ -45,6 +86,11 @@ body {
   height: 100%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
+  background: ${(props) => props.theme.color_font_secondary};
+}
+
+body{
+  background: ${(props) => props.theme.color_background_secondary};
 }
 `;
 
@@ -53,7 +99,6 @@ export const StyledWrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #f1f1f1;
 `;
 
 export const breakpoints = {

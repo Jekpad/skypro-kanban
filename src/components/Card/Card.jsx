@@ -11,7 +11,7 @@ import {
 import { topicCompare } from "../../data";
 import { Link } from "react-router-dom";
 import { AppRoutesList } from "../../AppRoutesList";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
+import { format } from "date-fns";
 
 const Card = ({ id, topic, title, date }) => {
   const color = topicCompare[topic];
@@ -24,13 +24,13 @@ const Card = ({ id, topic, title, date }) => {
           <StyledCardTheme $color={color}>
             <p>{topic}</p>
           </StyledCardTheme>
-          <a href="#popBrowse" target="_self">
+          <Link to={`${AppRoutesList.Card}/${id}`}>
             <StyledCardButton>
               <div></div>
               <div></div>
               <div></div>
             </StyledCardButton>
-          </a>
+          </Link>
         </StyledCardGroup>
         <StyledCardContent>
           <Link to={`${AppRoutesList.Card}/${id}`}>

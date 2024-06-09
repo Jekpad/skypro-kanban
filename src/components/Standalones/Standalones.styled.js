@@ -4,7 +4,7 @@ export const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #eaeef6;
+  background-color: ${(props) => props.theme.color_background_secondary};
 `;
 
 export const StyledContainer = styled.div`
@@ -28,7 +28,7 @@ export const StyledModal = styled.div`
 export const StyledModalBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.color_background_primary};
   max-width: 368px;
   width: 100%;
   padding: 50px 60px;
@@ -45,6 +45,7 @@ export const StyledModalTitle = styled.div`
     line-height: 30px;
     letter-spacing: -0.6px;
     margin-bottom: 20px;
+    color: ${(props) => props.theme.color_font_primary};
   }
 `;
 
