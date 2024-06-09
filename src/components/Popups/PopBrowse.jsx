@@ -67,16 +67,16 @@ const PopBrowse = ({ id }) => {
 
   if (editMode) {
     functionalButton = (
-      <div className="pop-browse__btn-edit">
-        <div className="btn-group">
+      <Styled.ButtonsGroup>
+        <Styled.FunctionalButtons>
           <Button onClick={editCard} text="Сохранить" $inverted />
           <Button onClick={() => setEditMode(false)} text="Отменить" $inverted />
           <Button onClick={deleteCard} text="Удалить задачу" $inverted />
-        </div>
+        </Styled.FunctionalButtons>
         <Link to="/">
           <Button text={"Закрыть"}></Button>
         </Link>
-      </div>
+      </Styled.ButtonsGroup>
     );
     statusBar = (
       <Styled.StyledPopUpCategories>
@@ -99,15 +99,15 @@ const PopBrowse = ({ id }) => {
     );
   } else {
     functionalButton = (
-      <div className="pop-browse__btn-browse ">
-        <div className="btn-group">
+      <Styled.ButtonsGroup>
+        <Styled.FunctionalButtons>
           <Button onClick={() => setEditMode(true)} text="Редактировать задачу" $inverted />
           <Button onClick={deleteCard} text="Удалить задачу" $inverted />
-        </div>
+        </Styled.FunctionalButtons>
         <Link to="/">
           <Button text={"Закрыть"}></Button>
         </Link>
-      </div>
+      </Styled.ButtonsGroup>
     );
   }
 

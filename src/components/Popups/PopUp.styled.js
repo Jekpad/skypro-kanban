@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { topicStyles } from "../../data";
+import { breakpoints } from "../../Global.styled";
 
 export const StyledPopUp = styled.div`
-  display: block;
   width: 100%;
   min-width: 375px;
   height: 100%;
@@ -11,6 +11,10 @@ export const StyledPopUp = styled.div`
   top: 0;
   left: 0;
   z-index: 6;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    position: absolute;
+  }
 `;
 
 export const StyledPopUpExitFormGroup = styled.div`
@@ -29,7 +33,12 @@ export const StyledPopUpContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+
+  @media (max-width: ${breakpoints.lg}px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const StyledPopUpBlock = styled.div`
@@ -42,6 +51,15 @@ export const StyledPopUpBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    border: unset;
+    border-radius: 0;
+  }
+
+  @media (max-width: ${breakpoints.md}px) {
+    padding: 20px 16px 32px;
+  }
 `;
 
 export const StyledPopUpTopBlock = styled.div`
@@ -78,6 +96,10 @@ export const StyledPopUpWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    display: block;
+  }
 `;
 
 export const StyledPopUpForm = styled.div`
@@ -85,6 +107,12 @@ export const StyledPopUpForm = styled.div`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
 `;
 
 export const StyledPopUpFormBlock = styled.div`
@@ -136,6 +164,12 @@ export const StyledPopUpFormTextarea = styled(StyledPopUpInput).attrs({ as: "tex
   max-width: 370px;
   margin-top: 14px;
   height: 200px;
+  background: ${(props) => props.theme.color_background_secondary};
+
+  @media (max-width: ${breakpoints.lg}px) {
+    max-width: 100%;
+    height: 80px;
+  }
 `;
 
 export const StyledPopUpCategories = styled.div`
@@ -192,5 +226,26 @@ export const StyledCategoriesStatus = styled(StyledCategoriesTheme)`
   ${StyledCategoriesThemeInput}:checked + & {
     background: #94a6be;
     color: #ffffff;
+  }
+`;
+
+export const ButtonsGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const FunctionalButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const ButtonRight = styled.div`
+  float: right;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    float: unset;
+    button {
+      min-width: 100%;
+    }
   }
 `;

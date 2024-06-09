@@ -1,8 +1,13 @@
 import { styled } from "styled-components";
+import { breakpoints } from "../../Global.styled";
 
 export const Calendar = styled.div`
   width: 182px;
   margin-bottom: 20px;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    width: 100%;
+  }
 `;
 
 export const CalendarTitle = styled.p`
@@ -41,6 +46,21 @@ export const DayPickerWrapper = styled.div`
     width: 22px;
     height: 22px;
   }
+
+  @media (max-width: ${breakpoints.lg}px) {
+    * {
+      font-size: 14px;
+    }
+
+    .rdp-cell {
+      height: 42px;
+    }
+
+    & button {
+      width: 42px;
+      height: 42px;
+    }
+  }
 `;
 
 export const CalendarPeriod = styled.div`
@@ -59,5 +79,12 @@ export const CalendarPeriodDateEnd = styled.p`
 
   & span {
     color: ${(props) => props.theme.color_font_primary};
+  }
+
+  @media (max-width: ${breakpoints.lg}px) {
+    font-size: 14px;
+    & span {
+      font-size: 14px;
+    }
   }
 `;

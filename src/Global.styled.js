@@ -1,5 +1,12 @@
 import { styled, createGlobalStyle } from "styled-components";
 
+export const breakpoints = {
+  sm: 375,
+  md: 495,
+  lg: 660,
+  xl: 1200,
+};
+
 export const lightTheme = {
   color_background_primary: "#FFFFFF",
   color_background_secondary: "#EAEEF6",
@@ -37,8 +44,6 @@ export const darkTheme = {
   color_button_inverted_background: "transparent",
   color_button_inverted_border: "#FFF",
 };
-
-//  ${(props) => props.theme.color_background_primary};
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -92,6 +97,31 @@ body {
 body{
   background: ${(props) => props.theme.color_background_secondary};
 }
+
+/* width/height */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: ${(props) => props.theme.color_background_secondary};
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: ${(props) => props.theme.color_background_primary};
+  border-radius: 8px; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 8px;
+  background: ${(props) => props.theme.color_button_background};
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: ${(props) => props.theme.color_button_background_contrast};
+}
 `;
 
 export const StyledWrapper = styled.div`
@@ -100,10 +130,3 @@ export const StyledWrapper = styled.div`
   min-height: 100vh;
   overflow: hidden;
 `;
-
-export const breakpoints = {
-  sm: 375,
-  md: 495,
-  lg: 660,
-  xl: 1200,
-};

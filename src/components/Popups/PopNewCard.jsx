@@ -80,13 +80,9 @@ const PopNewCard = () => {
                 ))}
               </Styled.StyledPopUpCategoriesThemes>
             </Styled.StyledPopUpCategories>
-            <Button
-              onClick={addCard}
-              text="Создать задачу"
-              id="btnCreate"
-              $width={"132px"}
-              className="form-new__create _hover01"
-            />
+            <Styled.ButtonRight>
+              <Button onClick={addCard} text="Создать задачу" id="btnCreate" $width={"132px"} />
+            </Styled.ButtonRight>
           </Styled.StyledPopUpContent>
         </Styled.StyledPopUpBlock>
       </Styled.StyledPopUpContainer>

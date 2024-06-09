@@ -1,4 +1,3 @@
-import "./App.css";
 import AppRoutes from "./AppRoutes";
 import CustomThemeProvider from "./providers/CustomThemeProvider";
 
