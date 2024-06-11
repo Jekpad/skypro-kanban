@@ -7,13 +7,15 @@ export const StyledInput = styled.input`
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   outline: none;
   padding: 10px 8px;
+  color: ${(props) => props.theme.color_font_primary};
+  background-color: transparent;
 
   &::-moz-placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.28px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
   }
 
   &::placeholder {
@@ -22,6 +24,6 @@ export const StyledInput = styled.input`
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.28px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
   }
 `;

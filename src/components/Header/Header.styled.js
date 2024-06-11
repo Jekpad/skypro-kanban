@@ -5,7 +5,7 @@ import { breakpoints } from "../../Global.styled";
 export const StyledHeader = styled.header`
   width: 100%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.color_background_primary};
 `;
 
 export const StyledHeaderBlock = styled.div`
@@ -65,7 +65,7 @@ export const StyledHeaderUser = styled.a`
   justify-content: center;
   font-size: 14px;
   line-height: 20px;
-  color: #565eef;
+  color: ${(props) => props.theme.color_font_primary};
 
   &::after {
     content: "";
@@ -89,15 +89,15 @@ export const StyledPopUpUser = styled.div`
   height: 205px;
   border-radius: 10px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  background: #fff;
-  box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
+  background: ${(props) => props.theme.color_background_primary};
+  box-shadow: 0px 10px 39px 0px ${(props) => props.theme.color_shadow};
   padding: 34px;
   text-align: center;
   z-index: 2;
 `;
 
 export const StyledPopUpUserName = styled.p`
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -106,7 +106,7 @@ export const StyledPopUpUserName = styled.p`
 `;
 
 export const StyledPopUpUserMail = styled.p`
-  color: #94a6be;
+  color: ${(props) => props.theme.color_font_secondary};
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.14px;
@@ -120,7 +120,7 @@ export const StyledHeaderTheme = styled.div`
   margin-bottom: 30px;
 
   & p {
-    color: #000;
+    color: ${(props) => props.theme.color_font_primary};
     font-size: 14px;
     line-height: 21px;
     letter-spacing: -0.14px;

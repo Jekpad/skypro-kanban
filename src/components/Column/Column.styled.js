@@ -4,12 +4,12 @@ import { breakpoints } from "../../Global.styled";
 export const StyledColumn = styled.div`
   width: 20%;
   margin: 0 auto;
-  display: block;
+  display: flex;
+  flex-flow: column;
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;
     margin: 0 auto;
-    display: block;
   }
 `;
 
@@ -18,7 +18,7 @@ export const StyledColumnTitle = styled.div`
   margin: 15px 0;
 
   & p {
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -30,6 +30,7 @@ export const StyledCards = styled.div`
   width: 100%;
   display: block;
   position: relative;
+  flex-grow: 1;
 
   @media (max-width: ${breakpoints.xl}px) {
     width: 100%;

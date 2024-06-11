@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { topicStyles } from "../../data";
+import { breakpoints } from "../../Global.styled";
 
 export const StyledPopUp = styled.div`
-  display: block;
   width: 100%;
   min-width: 375px;
   height: 100%;
@@ -11,6 +11,10 @@ export const StyledPopUp = styled.div`
   top: 0;
   left: 0;
   z-index: 6;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    position: absolute;
+  }
 `;
 
 export const StyledPopUpExitFormGroup = styled.div`
@@ -29,19 +33,40 @@ export const StyledPopUpContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.8);
+
+  @media (max-width: ${breakpoints.lg}px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const StyledPopUpBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #ffffff;
+  background: ${(props) => props.theme.color_background_primary};
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    border: unset;
+    border-radius: 0;
+  }
+
+  @media (max-width: ${breakpoints.md}px) {
+    padding: 20px 16px 32px;
+  }
+`;
+
+export const StyledPopUpTopBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
 `;
 
 export const StyledPopUpContent = styled.div`
@@ -50,7 +75,7 @@ export const StyledPopUpContent = styled.div`
 `;
 
 export const StyledPopUpTitle = styled.div`
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -71,6 +96,10 @@ export const StyledPopUpWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    display: block;
+  }
 `;
 
 export const StyledPopUpForm = styled.div`
@@ -78,6 +107,12 @@ export const StyledPopUpForm = styled.div`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
 `;
 
 export const StyledPopUpFormBlock = styled.div`
@@ -86,7 +121,7 @@ export const StyledPopUpFormBlock = styled.div`
 `;
 
 export const StyledPopUpSubtitle = styled.label`
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -102,12 +137,13 @@ export const StyledPopUpInput = styled.input`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
+  color: ${(props) => props.theme.color_font_primary};
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     letter-spacing: -0.14px;
   }
 
@@ -115,7 +151,7 @@ export const StyledPopUpInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94a6be;
+    color: ${(props) => props.theme.color_font_secondary};
     letter-spacing: -0.14px;
   }
 `;
@@ -128,6 +164,12 @@ export const StyledPopUpFormTextarea = styled(StyledPopUpInput).attrs({ as: "tex
   max-width: 370px;
   margin-top: 14px;
   height: 200px;
+  background: ${(props) => props.theme.color_background_secondary};
+
+  @media (max-width: ${breakpoints.lg}px) {
+    max-width: 100%;
+    height: 80px;
+  }
 `;
 
 export const StyledPopUpCategories = styled.div`
@@ -136,7 +178,7 @@ export const StyledPopUpCategories = styled.div`
 
 export const StyledPopUpCategoriesSubtitle = styled.p`
   margin-bottom: 14px;
-  color: #000;
+  color: ${(props) => props.theme.color_font_primary};
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -162,11 +204,48 @@ export const StyledCategoriesTheme = styled.label`
   border-radius: 24px;
   opacity: 0.4;
   cursor: pointer;
-  color: ${(props) => topicStyles[props.$colorName]["color"] || topicStyles["gray"]["color"]};
+  color: ${(props) => topicStyles[props.$colorName]?.color || topicStyles["gray"]["color"]};
   background-color: ${(props) =>
-    topicStyles[props.$colorName]["backgroundColor"] || topicStyles["gray"]["backgroundColor"]};
+    topicStyles[props.$colorName]?.backgroundColor || topicStyles["gray"]["backgroundColor"]};
 
   ${StyledCategoriesThemeInput}:checked + & {
     opacity: 1 !important;
+  }
+`;
+
+export const StyledCategoriesStatus = styled(StyledCategoriesTheme)`
+  height: unset;
+  font-size: 14px;
+  border-radius: 24px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  color: #94a6be;
+  padding: 11px 14px 10px;
+  background-color: transparent;
+  opacity: 1;
+
+  ${StyledCategoriesThemeInput}:checked + & {
+    background: #94a6be;
+    color: #ffffff;
+  }
+`;
+
+export const ButtonsGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const FunctionalButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const ButtonRight = styled.div`
+  float: right;
+
+  @media (max-width: ${breakpoints.lg}px) {
+    float: unset;
+    button {
+      min-width: 100%;
+    }
   }
 `;

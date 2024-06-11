@@ -3,7 +3,7 @@ import { breakpoints } from "../../Global.styled";
 
 export const StyledMain = styled.main`
   width: 100%;
-  background-color: #eaeef6;
+  background: ${(props) => props.theme.color_background_secondary};
 `;
 
 export const StyledMainBlock = styled.div`

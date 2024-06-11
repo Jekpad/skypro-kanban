@@ -75,3 +75,42 @@ export async function addNewTodos({ token, title, topic, description, date }) {
 
   throw new Error("Ошибка сервера!");
 }
+
+export async function editTodos({ token, taskId, title, topic, status, description, date }) {
+  const response = await fetch(`https://wedev-api.sky.pro/api/kanban/${taskId}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      title: title,
+      topic: topic,
+      status: status,
+      description: description,
+      date: date,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+
+  throw new Error("Ошибка сервера!");
+}
+
+export async function deleteTodos({ token, taskId }) {
+  const response = await fetch(`https://wedev-api.sky.pro/api/kanban/${taskId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+
+  throw new Error("Ошибка сервера!");
+}

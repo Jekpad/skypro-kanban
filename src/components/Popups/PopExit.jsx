@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import { StyledPopUp, StyledPopUpExitFormGroup } from "./PopUp.styled";
+import * as Styled from "./PopUp.styled";
+import * as StyledEx from "./PopUpExit.styled";
 import { AppRoutesList } from "../../AppRoutesList";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/user";
 
 const PopExit = () => {
   const { updateUser } = useUserContext();
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -16,25 +16,23 @@ const PopExit = () => {
   };
 
   return (
-    <StyledPopUp>
-      <StyledPopUp className="pop-exit" id="popExit">
-        <div className="pop-exit__container">
-          <div className="pop-exit__block">
-            <div className="pop-exit__ttl">
-              <h2>Выйти из аккаунта?</h2>
-            </div>
+    <Styled.StyledPopUp>
+      <Styled.StyledPopUp>
+        <Styled.StyledPopUpContainer>
+          <StyledEx.ExitStyledPopUpBlock>
+            <StyledEx.ExitTitle>Выйти из аккаунта?</StyledEx.ExitTitle>
             <form id="formExit">
-              <StyledPopUpExitFormGroup>
+              <Styled.StyledPopUpExitFormGroup>
                 <Button $width={"119px"} text={"Да, выйти"} onClick={handleLogout}></Button>
                 <Link to={"/"}>
                   <Button $inverted $width={"119px"} text={"Нет, остаться"}></Button>
                 </Link>
-              </StyledPopUpExitFormGroup>
+              </Styled.StyledPopUpExitFormGroup>
             </form>
-          </div>
-        </div>
-      </StyledPopUp>
-    </StyledPopUp>
+          </StyledEx.ExitStyledPopUpBlock>
+        </Styled.StyledPopUpContainer>
+      </Styled.StyledPopUp>
+    </Styled.StyledPopUp>
   );
 };
 

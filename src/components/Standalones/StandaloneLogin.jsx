@@ -16,9 +16,8 @@ import { loginUser } from "../../api";
 import { useState } from "react";
 import { useUserContext } from "../../context/user";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Slide } from "react-toastify";
 
 const StandaloneLogin = () => {
   const { updateUser } = useUserContext();

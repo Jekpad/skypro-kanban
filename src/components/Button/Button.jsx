@@ -1,10 +1,20 @@
-import { StyledButton } from "./Button.styled";
+import { StyledButton, StyledButtonInverted } from "./Button.styled";
 
-const Button = ({ link, text, id, className, onClick, ...props }) => {
+const Button = ({ link, text, onClick, ...props }) => {
   return (
-    <StyledButton id={id || ""} className={className || ""} onClick={onClick} {...props}>
-      {link ? <a href={link}>{text}</a> : text}
-    </StyledButton>
+    <>
+      {props.$inverted ? (
+        <StyledButtonInverted onClick={onClick} {...props}>
+          {" "}
+          {link ? <a href={link}>{text}</a> : text}
+        </StyledButtonInverted>
+      ) : (
+        <StyledButton onClick={onClick} {...props}>
+          {" "}
+          {link ? <a href={link}>{text}</a> : text}
+        </StyledButton>
+      )}
+    </>
   );
 };
 
